@@ -47,6 +47,44 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
 
+  //inserts dropdown menu to submit with colored flags for priority levels
+  document.body.onLoad = addFormOptions();
+
+  function addFormOptions(){
+    let dropdown = document.createElement('select');
+    dropdown.setAttribute("id", "priority-selector");
+
+    let dropPrompt = document.createElement('option');
+    dropPrompt.setAttribute("value", "null");
+    let dropPromptText = document.createTextNode("Priority");
+    dropPrompt.appendChild(dropPromptText);
+
+    let greenFlag = document.createElement('option');
+    greenFlag.setAttribute("value", "green flag");
+    greenFlag.setAttribute('style', "color:green;");
+    let greenFlagIcon = document.createTextNode("⚑ - low");
+    greenFlag.appendChild(greenFlagIcon);
+
+    let yellowFlag = document.createElement('option');
+    yellowFlag.setAttribute("value", "yellow flag");
+    yellowFlag.setAttribute('style', "color:gold;");
+    let yellowFlagIcon = document.createTextNode("⚑ - medium");
+    yellowFlag.appendChild(yellowFlagIcon);
+
+    let redFlag = document.createElement('option');
+    redFlag.setAttribute("value", "red flag");
+    redFlag.setAttribute('style', "color:red;");
+    let redFlagIcon = document.createTextNode("⚑ - high");
+    redFlag.appendChild(redFlagIcon);
+
+    dropdown.appendChild(dropPrompt);
+    dropdown.appendChild(greenFlag);
+    dropdown.appendChild(yellowFlag);
+    dropdown.appendChild(redFlag);
+    let taskInput = document.getElementById('new-task-description');
+    taskInput.insertAdjacentElement('afterend', dropdown);
+  }
+
   /*creates a list element, interpolates the passed in argument of input.value from 
   formSubmitHandler and interpolates to the li and finally appends to parent ul element.*/
   
